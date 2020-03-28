@@ -12,8 +12,15 @@ namespace HomeworkTemplate
                 // Your solution goes here
                 // You can get all needed inputs from task.[Property]
                 // Good luck!
+                const int padding = Task2.Padding;
+                float balance = task.Balance;
+                char symbol = task.DecorativeSign;
 
-                return "My answer";
+                string str = $"{"",-1 * padding/2}${balance:N2}{"",padding/2}";
+
+                int length = str.Length;
+
+                return str.PadLeft(length + padding / 2, symbol).PadRight(length + padding, symbol);
             };
 
             Task2.CheckSolver(TaskSolver);
