@@ -16,11 +16,17 @@ namespace HomeworkTemplate
                 float balance = task.Balance;
                 char symbol = task.DecorativeSign;
 
-                string str = $"{"",-1 * padding/2}${balance:N2}{"",padding/2}";
+                FormattableString balanceFormat = $"{balance:C2}";
 
-                int length = str.Length;
+                string balanceStr = balanceFormat.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"));
 
-                return str.PadLeft(length + padding / 2, symbol).PadRight(length + padding, symbol);
+                string answerStr = $"{"",-1 * padding/2}{balanceStr}{"",padding/2}";
+
+                int length = answerStr.Length;
+
+
+
+                return answerStr.PadLeft(length + padding / 2, symbol).PadRight(length + padding, symbol);
             };
 
             Task2.CheckSolver(TaskSolver);
